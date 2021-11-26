@@ -163,13 +163,14 @@ class Trainer:
                 lr[e] = self._sched.get_last_lr()
                 print_log('\tl_rate:\t{}'.format(lr[e]), self.log_file)
                 self._sched.step()
-
+                
+            self.save_params(train_loss, val_loss, acc, lr)
+            
             if acc[e] > best_acc:
                 
                 # save checkpoint and params
                 self.save_checkpoint(e)
-                self.save_params(train_loss, val_loss, acc, lr)
-
+               
                 # store as best acc
                 best_acc = acc[e]
 
