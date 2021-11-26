@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--name', default = None, type=str, help='Name for the training session')
 parser.add_argument('-b', '--batch', default=32, type=int, help='Batch size')
 parser.add_argument('-e', '--epochs', default=350, type=int, help='Number epochs')
-parser.add_argument('-lr', '--learning_rate', default=1e-4, type=int, help='Learning rate')
+parser.add_argument('-lr', '--learning_rate', default=1e-4, type=float, help='Learning rate')
 args = parser.parse_args()
 
 # variables
