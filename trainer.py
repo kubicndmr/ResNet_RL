@@ -144,6 +144,8 @@ class Trainer:
         acc = np.zeros((epochs,1))
         lr = np.zeros((epochs,1))
 
+        best_acc = 0
+
         for e in range(epochs):
             # print epoch number
             print_log('\nEpoch : {}/{}'.format(e+1,epochs), self.log_file)
@@ -162,8 +164,13 @@ class Trainer:
                 print_log('\tl_rate:\t{}'.format(lr[e]), self.log_file)
                 self._sched.step()
 
-            # save checkpoint and params
-            self.save_checkpoint(e)
-            self.save_params(train_loss, val_loss, acc, lr)
+            if acc[e] > best_acc:
+                
+                # save checkpoint and params
+                self.save_checkpoint(e)
+                self.save_params(train_loss, val_loss, acc, lr)
+
+                # store as best acc
+                best_acc = acc[e]
 
         return [train_loss, val_loss, acc]
