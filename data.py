@@ -23,7 +23,8 @@ class ResNetDataset(Dataset):
         im = imread(data[0])
         im = self.tr(im)
         
-        label = torch.tensor(data[1])
+        label = torch.zeros(7)
+        label[data[1]] = 1
         
         return (im,label)
     
