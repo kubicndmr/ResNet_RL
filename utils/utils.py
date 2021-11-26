@@ -104,16 +104,16 @@ def result_path(file_name = None):
     '''
 
     # check root folder
-    if not os.path.exists('results/'):
-        os.mkdir('results/')
+    if not os.path.exists('../gdrive/MyDrive/results/'):
+        os.mkdir('../gdrive/MyDrive/results/')
 
     # find target path
-    res_idx = len(os.listdir('results/')) + 1
+    res_idx = len(os.listdir('../gdrive/MyDrive/results/')) + 1
 
     if file_name is None:
-        target_path = os.path.join('results/', 'Training_' + str(res_idx ) + '/')
+        target_path = os.path.join('../gdrive/MyDrive/results/', 'Training_' + str(res_idx ) + '/')
     else:
-        target_path = os.path.join('results/', 'Training_' + str(res_idx) + '_' + file_name + '/')
+        target_path = os.path.join('../gdrive/MyDrive/results/', 'Training_' + file_name + '/')
     
     # create folder
     os.mkdir(target_path)
